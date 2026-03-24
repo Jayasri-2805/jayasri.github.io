@@ -1,0 +1,515 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Jaya Sri M | Full-Stack Developer Portfolio</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header / Hero */
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: white;
+      padding: 3rem 0 3rem 0;
+      border-bottom: 4px solid #3b82f6;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .hero-text h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-tagline {
+      font-size: 1.2rem;
+      color: #cbd5e1;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-tagline span {
+      background: #3b82f6;
+      padding: 4px 12px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .contact-info {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .contact-info a, .contact-info div {
+      color: #e2e8f0;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .contact-info a:hover {
+      color: #60a5fa;
+    }
+
+    .hero-badge {
+      background: rgba(59,130,246,0.2);
+      backdrop-filter: blur(4px);
+      padding: 1rem 1.8rem;
+      border-radius: 2rem;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .hero-badge i {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #60a5fa;
+    }
+
+    /* section styles */
+    section {
+      padding: 4rem 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60%;
+      height: 3px;
+      background: #3b82f6;
+      border-radius: 4px;
+    }
+
+    .about-text {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 24px;
+      box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05);
+      font-size: 1rem;
+      max-width: 800px;
+      color: #1e293b;
+      border: 1px solid #eef2ff;
+    }
+
+    /* Experience & cards */
+    .exp-grid, .projects-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .exp-card, .project-card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+      border: 1px solid #e2e8f0;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .exp-card:hover, .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);
+      border-color: #cbd5e1;
+    }
+
+    .exp-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .exp-company {
+      font-weight: 600;
+      color: #3b82f6;
+      margin: 0.3rem 0 0.5rem 0;
+      font-size: 0.9rem;
+    }
+    .exp-desc {
+      color: #334155;
+      margin-top: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .project-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .project-tech {
+      display: inline-block;
+      background: #eef2ff;
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #1e40af;
+      margin: 0.5rem 0;
+    }
+    .project-desc {
+      color: #334155;
+    }
+
+    /* skills + awards mix */
+    .skills-area {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+    }
+    .skills-box, .interests-box {
+      background: white;
+      border-radius: 24px;
+      padding: 1.5rem;
+      flex: 1;
+      min-width: 220px;
+      border: 1px solid #e2e8f0;
+    }
+    .skills-box h3, .interests-box h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .skill-tag {
+      background: #f1f5f9;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #0f172a;
+    }
+    .interest-list {
+      list-style: none;
+    }
+    .interest-list li {
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .award-item {
+      background: white;
+      border-radius: 20px;
+      padding: 1rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid #eef2ff;
+    }
+    .award-item i {
+      font-size: 1.5rem;
+      color: #f59e0b;
+    }
+    .education-item {
+      background: white;
+      border-radius: 20px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #3b82f6;
+    }
+    .lang-row {
+      display: flex;
+      gap: 1.5rem;
+      background: white;
+      padding: 1rem 1.5rem;
+      border-radius: 50px;
+      width: fit-content;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #475569;
+      font-size: 0.85rem;
+    }
+    @media (max-width: 700px) {
+      .hero-content {
+        flex-direction: column;
+        align-items: start;
+      }
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+      .section-title {
+        font-size: 1.5rem;
+      }
+    }
+    .btn-resume {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #3b82f6;
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-weight: 600;
+      color: white;
+      text-decoration: none;
+      margin-top: 1rem;
+      transition: background 0.2s;
+    }
+    .btn-resume:hover {
+      background: #2563eb;
+    }
+    hr {
+      margin: 0.5rem 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<div class="hero">
+  <div class="container hero-content">
+    <div class="hero-text">
+      <h1>Jaya Sri M</h1>
+      <div class="hero-tagline">
+        <i class="fas fa-code"></i> Software Developer | Full-Stack Enthusiast 
+        <span>Ready to Learn & Build</span>
+      </div>
+      <div class="contact-info">
+        <div><i class="fas fa-map-marker-alt"></i> 20/68, Anitha illam, Vivekanandar street, Moolapalayam, Erode-638002</div>
+        <a href="mailto:srij52730@gmail.com"><i class="fas fa-envelope"></i> srij52730@gmail.com</a>
+        <a href="#" target="_blank"><i class="fab fa-linkedin"></i> linkedin.com/in/jaya-sri-m</a>
+      </div>
+      <a href="#" class="btn-resume" id="downloadMsgBtn"><i class="fas fa-download"></i> Download Portfolio (Resume)</a>
+    </div>
+    <div class="hero-badge">
+      <i class="fas fa-laptop-code"></i>
+      <div style="font-weight:700;">Full-Stack</div>
+      <div style="font-size:0.8rem;">MERN | Python | Java</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <!-- About Section -->
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-text">
+      <i class="fas fa-quote-left" style="color:#3b82f6; margin-right: 8px;"></i> 
+      Aiming for a rewarding position in the industry that allows me to apply my technical and managerial skills while contributing to organizational growth and advancing my professional development. Passionate about full-stack development, AI-driven solutions, and continuous learning.
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience">
+    <h2 class="section-title">Experience</h2>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <div class="exp-title">Product Owner / Scrum Master & Architect Consultor</div>
+        <div class="exp-company">Aveers - Intern</div>
+        <div class="exp-desc">
+          Contributed to project "Vigilance 360". Helped define product requirements, coordinated with cross-functional teams, and explored emerging technologies to support product growth. Gained hands-on exposure to agile methodologies and stakeholder collaboration.
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-title">Technical Trainee</div>
+        <div class="exp-company">Face prep - Intern</div>
+        <div class="exp-desc">
+          Hands-on experience in technical training and practical skill development. Assisted in curriculum content, mentored peers, and strengthened core programming concepts through real-world exercises.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <h2 class="section-title">Education</h2>
+    <div class="education-item">
+      <strong style="font-size:1.1rem;">Velalar College Of Engineering And Technology (2022-2026)</strong><br>
+      B.Tech Information Technology | CGPA: 8.10* (Pursuing)
+    </div>
+    <div class="education-item">
+      <strong>Kongu National Matric Hr.Sec.School (2020-2022)</strong><br>
+      HSC Completed with 83.8%
+    </div>
+    <div class="education-item">
+      <strong>Navarasam Matric Hr.Sec.School (2019-2020)</strong><br>
+      SSLC Completed with 98%
+    </div>
+  </section>
+
+  <!-- Projects Section (2 main projects from resume) -->
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-title">🚦 Real Time Road Traffic Incident Management System Using CNN</div>
+        <div class="project-tech">CNN | Python | OpenCV | AI Monitoring</div>
+        <div class="project-desc">
+          Detects road accidents in real-time using CNN and traffic video data. Analyzes CCTV footage to identify collisions or sudden stops. 
+          Sends alerts to emergency services for rapid response. Integrates traffic parameters like speed and flow for improved accuracy — enhancing road safety through AI-based surveillance.
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-title">🔍 Hybrid LBPH–YOLO Framework for Real-Time Criminal Identification & Crowd Hotspot Management</div>
+        <div class="project-tech">YOLO | LBPH | Deep Learning | Computer Vision</div>
+        <div class="project-desc">
+          Combines YOLO for real-time object detection and LBPH for accurate face recognition. Detects people in live CCTV footage, identifies known criminals by matching with a database, tracks movement, and analyzes crowd density to detect hotspots. 
+          Alerts authorities for suspicious individuals or abnormal crowd patterns — proactive public safety framework.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills & Area of Interest -->
+  <section id="skills">
+    <h2 class="section-title">Tech Stack & Competencies</h2>
+    <div class="skills-area">
+      <div class="skills-box">
+        <h3><i class="fas fa-cogs"></i> Core Skills</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Web Developer</span>
+          <span class="skill-tag">Full Stack Developer</span>
+          <span class="skill-tag">Java Programming</span>
+          <span class="skill-tag">Python Programming</span>
+          <span class="skill-tag">C Programming</span>
+          <span class="skill-tag">HTML5/CSS3</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">React.js</span>
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Git/GitHub</span>
+        </div>
+      </div>
+      <div class="interests-box">
+        <h3><i class="fas fa-heart"></i> Area of Interest</h3>
+        <ul class="interest-list">
+          <li><i class="fab fa-react"></i> MERN Stack Development</li>
+          <li><i class="fas fa-globe"></i> Web Development & UI/UX</li>
+         
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards & Achievements -->
+  <section id="awards">
+    <h2 class="section-title">Awards & Achievements</h2>
+    <div class="awards-grid">
+      <div class="award-item"><i class="fab fa-google"></i> <span>Achieved Ultimate Milestone in Google Cloud Arcade Facilitator Program 2025 — won gifts</span></div>
+      <div class="award-item"><i class="fas fa-chart-line"></i> <span>MERN Stack Development Tasks with 95% overall score — strong technical proficiency</span></div>
+      <div class="award-item"><i class="fas fa-laptop-code"></i> <span>Completed Web Development training with hands-on real-time projects</span></div>
+      <div class="award-item"><i class="fas fa-medal"></i> <span>Infosys Pragati Program — completed modules, earned certification</span></div>
+      <div class="award-item"><i class="fas fa-university"></i> <span>NPTEL Certification: Human-Computer Interaction (Score 75%)</span></div>
+      <div class="award-item"><i class="fas fa-cube"></i> <span>3-day workshop on Blockchain Technology</span></div>
+    </div>
+  </section>
+
+  <!-- Languages -->
+  <section id="languages">
+    <h2 class="section-title">Languages</h2>
+    <div class="lang-row">
+      <span><i class="fas fa-language"></i> Tamil (Native)</span>
+      <span><i class="fas fa-language"></i> English (Professional Proficiency)</span>
+    </div>
+  </section>
+  
+  <!-- additional note: ready to learn -->
+  <div style="background: #eef2ff; border-radius: 30px; padding: 1rem 2rem; margin: 1rem 0 2rem 0; text-align: center;">
+    <i class="fas fa-rocket" style="color:#2563eb;"></i> <strong>Open to opportunities</strong> — Full-Stack Developer / Software Engineer roles. Passionate about building impactful products and scaling technologies.
+  </div>
+</div>
+
+
+
+<!-- Simple interactive alert for resume download simulation -->
+<script>
+  const downloadBtn = document.getElementById('downloadMsgBtn');
+  if(downloadBtn) {
+    downloadBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Creating a virtual text file with resume summary (as a nice gesture)
+      const resumeText = `JAYA SRI M - Full-Stack Developer\n\nContact: srij52730@gmail.com | Erode, India\n\nABOUT: Aiming for rewarding position applying technical & managerial skills.\n\nEXPERIENCE:\n- Aveers: Product Owner/Scrum Master (Vigilance 360) - defined requirements, team coordination.\n- Face prep: Technical Trainee - technical training & skill development.\n\nEDUCATION: B.Tech IT (8.10 CGPA), HSC 83.8%, SSLC 98%.\n\nPROJECTS:\n1. Real Time Road Traffic Incident Management using CNN.\n2. Hybrid LBPH-YOLO Criminal Identification & Crowd Hotspot Management.\n\nSKILLS: Full-Stack (MERN), Java, Python, C, Web Dev.\n\nAWARDS: Google Cloud Arcade Facilitator 2025, MERN Stack 95%, Infosys Pragati, NPTEL HCI 75%, Blockchain Workshop.\n\nLANGUAGES: Tamil, English.\n`;
+      const blob = new Blob([resumeText], {type: 'text/plain'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Jaya_Sri_Resume.txt';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      
+      // optional small alert
+      const toastMsg = document.createElement('div');
+      toastMsg.innerText = '📄 Resume text downloaded! (Full portfolio details included)';
+      toastMsg.style.position = 'fixed';
+      toastMsg.style.bottom = '20px';
+      toastMsg.style.left = '20px';
+      toastMsg.style.backgroundColor = '#0f172a';
+      toastMsg.style.color = 'white';
+      toastMsg.style.padding = '10px 20px';
+      toastMsg.style.borderRadius = '40px';
+      toastMsg.style.zIndex = '999';
+      toastMsg.style.fontSize = '0.85rem';
+      toastMsg.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+      document.body.appendChild(toastMsg);
+      setTimeout(() => toastMsg.remove(), 2500);
+    });
+  }
+</script>
+
+
+</body>
+</html>
